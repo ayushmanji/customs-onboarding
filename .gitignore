@@ -1,0 +1,42 @@
+# Node & Dependencies
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+
+# Testing & Coverage
+coverage/
+
+# Build & Dist Outputs
+dist/
+**/dist/
+build/
+**/build/
+
+# Environment variables & secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+**/.env
+
+# SQLite Databases & Storage
+*.db
+*.db-journal
+backend/prisma/dev.db
+backend/prisma/dev.db-journal
+dev.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,60 @@
+// Prisma Schema for Customs Broker & Customer Onboarding
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite" // Can be switched to "postgresql" for production PostgreSQL deployment
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String     @id @default(uuid())
+  name            String
+  email           String     @unique
+  password        String     // Bcrypt hashed password
+  role            String     @default("BROKER") // BROKER or ADMIN
+  brokerLicenseNo String?
+  companyName     String?
+  phone           String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+
+  customers       Customer[]
+  auditLogs       AuditLog[]
+}
+
+model Customer {
+  id           String   @id @default(uuid())
+  brokerId     String
+  broker       User     @relation(fields: [brokerId], references: [id], onDelete: Cascade)
+  
+  name         String   // Legal Name / Company Name
+  tradeName    String?  // Trade Name
+  email        String
+  phone        String
+  customerType String   // EXPORTER, IMPORTER, or BOTH
+  gstin        String   // 15-digit Indian GSTIN
+  iec          String?  // 10-digit Import Export Code
+  pan          String?  // 10-character PAN
+  address      String
+  city         String
+  state        String
+  pincode      String
+  status       String   @default("VERIFIED") // VERIFIED, PENDING_VERIFICATION, ACTION_REQUIRED
+  
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([brokerId])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  details   String
+  createdAt DateTime @default(now())
+}
