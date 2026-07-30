@@ -4,12 +4,53 @@ A full-stack, enterprise-grade web application designed for **Customs Brokers** 
 
 ---
 
+## 🎥 Working Demo Video
+
+A complete walkthrough video demonstrating registration, client onboarding, GSTIN verification, dashboard management, and system administration is included in the project repository:
+
+▶️ **[Watch Application Demo Video (MP4)](<./Intro. video/a229042ad1be4339be964cf574fb111f.mp4>)**
+
+---
+
+## 📸 Application Screenshots
+
+### 1. Broker Authentication & Password Strength Indicator
+![Broker Sign In](./Screenshort/first_screenshot.png)
+![Broker Registration](./Screenshort/screenshot_2.png)
+
+### 2. Customer Onboarding Form (Page 1) & Live Verification
+![Customer Onboarding Step 1](./Screenshort/screenshot_3.png)
+![GSTIN Verification & Address](./Screenshort/screenshot_4.png)
+
+### 3. Customs Broker Dashboard & Client Management
+![Broker Dashboard View](./Screenshort/screenshot_5.png)
+![Client Search & Filtering](./Screenshort/screenshot_6.png)
+![Customer Detailed Profile Drawer](./Screenshort/screenshot_7.png)
+
+### 4. Admin Dashboard & Security Audit Feed
+![Admin Panel Overview](./Screenshort/screenshot_8.png)
+![Global Audit Trail](./Screenshort/screenshot_9.png)
+
+---
+
 ## 🏗️ Repository Architecture
 
-The project is structured into two main decoupled applications:
+The project is structured into two main decoupled applications alongside submission media assets:
 
 ```
 customs-onboarding/
+├── Intro. video/                  # Walkthrough video demonstration asset
+│   └── a229042ad1be4339be964cf574fb111f.mp4
+├── Screenshort/                   # Application UI & Database screenshots
+│   ├── first_screenshot.png
+│   ├── screenshot_2.png
+│   ├── screenshot_3.png
+│   ├── screenshot_4.png
+│   ├── screenshot_5.png
+│   ├── screenshot_6.png
+│   ├── screenshot_7.png
+│   ├── screenshot_8.png
+│   └── screenshot_9.png
 ├── backend/                       # Node.js + Express + TypeScript + Prisma ORM API
 │   ├── prisma/
 │   │   ├── schema.prisma          # Database schema (PostgreSQL / SQLite ready)
@@ -161,11 +202,3 @@ The database comes pre-seeded with two accounts for easy testing:
 | `POST` | `/api/customers/verify-gstin` | Broker | Mock GSTIN & IEC clearance portal verification |
 | `GET` | `/api/admin/overview` | Admin Only | Platform-wide stats and security audit logs |
 | `GET` | `/api/admin/users` | Admin Only | List all registered broker accounts |
-
----
-
-## ✨ Features & UI Screenshots Summary
-- **Broker Registration & Login**: Interactive password strength meter, secure JWT authentication.
-- **Client Onboarding Form**: Exporter / Importer selector, GSTIN auto-formatting, live verification utility.
-- **Broker Dashboard**: Live stats cards, search and filter options, detailed customer profile modal drawer.
-- **Admin Dashboard**: System-wide broker table and real-time security audit log feed.
